@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\zxema\.Rider2019.2\config\scratches" t="IncludeRecursive" />
+    <e p="C:\Users\zxema\.Rider2019.2\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\zxema\.Rider2019.2\system\resharper-host\local\Transient\ReSharperHost\v192\SolutionCaches\_WikitudeUnityExample.-831395777.00" t="ExcludeRecursive" />
+    <e p="D:\UberPsi\UnityProjects\Wikitude_Unity_8-9-0_8-9-0_2019_09_24_03_43_11\Examples\WikitudeUnityExample" t="IncludeRecursive">
+      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
+      <e p="Assets" t="Include">
+        <e p="expirements" t="Include">
+          <e p="UnityExternalAnnotations.cs" t="Include" />
+        </e>
+        <e p="NuGet" t="Include">
+          <e p="LICENSE.txt" t="Include" />
+        </e>
+        <e p="Packages" t="Include">
+          <e p="ExternalAnnotationsGenerator.2.3" t="Include">
+            <e p="lib" t="Include">
+              <e p="ExternalAnnotationsGenerator.xml" t="Include" />
+            </e>
+          </e>
+          <e p="Unity3D.1.2.0" t="Include">
+            <e p="readme.txt" t="Include" />
+          </e>
+          <e p="UnityFx.DependencyInjection.0.2.0" t="Include">
+            <e p="lib" t="Include">
+              <e p="net46" t="Include">
+                <e p="UnityFx.DependencyInjection.xml" t="Include" />
+              </e>
+            </e>
+          </e>
+          <e p="Wave.1.0.0.0" t="Include">
+            <e p="context" t="Include">
+              <e p="readme.txt" t="Include" />
+            </e>
+          </e>
+          <e p="Wooga.Lambda.Log.Unity3D.Source.0.2.0" t="Include">
+            <e p="content" t="Include">
+              <e p="Wooga.Lambda.Log" t="Include">
+                <e p="LogAgent.cs" t="Include" />
+              </e>
+            </e>
+          </e>
+          <e p="Wooga.Lambda.Logging.Unity3D.Source.0.6.3" t="Include">
+            <e p="content" t="Include">
+              <e p="Wooga.Lambda.Logging" t="Include">
+                <e p="Log.cs" t="Include" />
+              </e>
+            </e>
+          </e>
+          <e p="Wooga.Lambda.Unity3D.Source.0.6.3" t="Include">
+            <e p="content" t="Include">
+              <e p="Wooga.Lambda" t="Include">
+                <e p="Control" t="Include">
+                  <e p="Concurrent" t="Include">
+                    <e p="Agent.cs" t="Include" />
+                    <e p="Async.cs" t="Include" />
+                    <e p="ThreadComputationQueue.cs" t="Include" />
+                    <e p="ThreadPoolComputationQueue.cs" t="Include" />
+                  </e>
+                  <e p="Monad" t="Include">
+                    <e p="Either.cs" t="Include" />
+                    <e p="Maybe.cs" t="Include" />
+                  </e>
+                  <e p="Pattern.cs" t="Include" />
+                  <e p="Retry.cs" t="Include" />
+                </e>
+                <e p="Data" t="Include">
+                  <e p="ImmutableList.cs" t="Include" />
+                  <e p="ImmutableTuple.cs" t="Include" />
+                  <e p="Unit.cs" t="Include" />
+                </e>
+              </e>
+            </e>
+          </e>
+        </e>
+        <e p="Wikitude" t="Include">
+          <e p="Dependencies" t="Include">
+            <e p="link.xml" t="Include" />
+            <e p="Platform.cs" t="Include" />
+          </e>
+          <e p="Samples" t="Include">
+            <e p="Scripts" t="Include">
+              <e p="CameraSettingsController.cs" t="Include" />
+              <e p="ContinuousRecognitionController.cs" t="Include" />
+              <e p="ExtendedImageTrackingController.cs" t="Include" />
+              <e p="ExtendedObjectTrackingController.cs" t="Include" />
+              <e p="InputPlugin" t="Include">
+                <e p="CustomCameraController.cs" t="Include" />
+                <e p="CustomCameraRenderer.cs" t="Include" />
+                <e p="SimpleInputPluginController.cs" t="Include" />
+              </e>
+              <e p="InstantTracking" t="Include">
+                <e p="DockUI.cs" t="Include" />
+                <e p="GridRenderer.cs" t="Include" />
+                <e p="InstantTrackingController.cs" t="Include" />
+                <e p="LoadInstantTarget.cs" t="Include" />
+                <e p="MoveController.cs" t="Include" />
+                <e p="PlaneRenderer.cs" t="Include" />
+                <e p="SaveInstantTarget.cs" t="Include" />
+                <e p="ScaleController.cs" t="Include" />
+                <e p="SceneDescription.cs" t="Include" />
+                <e p="ScenePickingController.cs" t="Include" />
+                <e p="ToastController.cs" t="Include" />
+              </e>
+              <e p="MenuController.cs" t="Include" />
+              <e p="MultipleTargets" t="Include">
+                <e p="Dinosaur.cs" t="Include" />
+                <e p="MultipleTargetsController.cs" t="Include" />
+              </e>
+              <e p="MultipleTrackersController.cs" t="Include" />
+              <e p="ObjectTrackingController.cs" t="Include" />
+              <e p="PluginController.cs" t="Include" />
+              <e p="RuntimeTrackerController.cs" t="Include" />
+              <e p="SampleController.cs" t="Include" />
+              <e p="SingleRecognitionController.cs" t="Include" />
+            </e>
+            <e p="Shaders" t="Include">
+              <e p="OccluderShader.shader" t="Include" />
+              <e p="ScanEffect.shader" t="Include" />
+              <e p="TransparentShadowReceiver.shader" t="Include" />
+              <e p="TransparentTextureColor.shader" t="Include" />
+            </e>
+          </e>
+        </e>
+      </e>
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="Packages" t="ExcludeRecursive" />
+      <e p="Temp\bin" t="ExcludeRecursive" />
+      <e p="WikitudeUnityExample.sln" t="IncludeFlat" />
+    </e>
+  </component>
+</project>

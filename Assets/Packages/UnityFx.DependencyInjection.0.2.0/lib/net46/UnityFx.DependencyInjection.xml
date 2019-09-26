@@ -1,0 +1,439 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>UnityFx.DependencyInjection</name>
+    </assembly>
+    <members>
+        <member name="T:UnityFx.DependencyInjection.IServiceCollection">
+            <summary>
+            Specifies the contract for a collection of service descriptors.
+            </summary>
+            <seealso cref="T:UnityFx.DependencyInjection.ServiceDescriptor"/>
+            <seealso cref="T:System.IServiceProvider"/>
+        </member>
+        <member name="M:UnityFx.DependencyInjection.IServiceCollection.Contains(System.Type)">
+            <summary>
+            Determines whether the collection contains a service having specific type.
+            </summary>
+            <param name="serviceType">The service type to check for.</param>
+            <returns>Returns <see langword="true"/> if the collection contains service of type <paramref name="serviceType"/>; <see langword="false"/> otherwise.</returns>
+        </member>
+        <member name="M:UnityFx.DependencyInjection.IServiceCollection.Remove(System.Type)">
+            <summary>
+            Removes the first service of type <paramref name="serviceType"/> from the collection.
+            </summary>
+            <param name="serviceType">The service type to remove.</param>
+        </member>
+        <member name="T:UnityFx.DependencyInjection.IServiceScope">
+            <summary>
+            A generic service scope.
+            </summary>
+            <remarks>
+            The <see cref="M:System.IDisposable.Dispose"/> method ends the scope lifetime. Once it is called,
+            any scoped services that have been resolved from <see cref="T:System.IServiceProvider"/> will be
+            disposed.
+            </remarks>
+            <seealso cref="T:System.IServiceProvider"/>
+        </member>
+        <member name="P:UnityFx.DependencyInjection.IServiceScope.ServiceProvider">
+            <summary>
+            Gets <see cref="T:System.IServiceProvider"/> used to resolve dependencies from the scope.
+            </summary>
+        </member>
+        <member name="T:UnityFx.DependencyInjection.IServiceScopeFactory">
+            <summary>
+            A factory for creating instances of <see cref="T:UnityFx.DependencyInjection.IServiceScope"/>, which is used to create services within a scope.
+            </summary>
+            <seealso cref="T:UnityFx.DependencyInjection.IServiceScope"/>
+            <seealso cref="T:System.IServiceProvider"/>
+        </member>
+        <member name="M:UnityFx.DependencyInjection.IServiceScopeFactory.CreateScope">
+            <summary>
+            Creates an <see cref="T:UnityFx.DependencyInjection.IServiceScope"/> which contains an <see cref="T:System.IServiceProvider"/> used to resolve dependencies from a newly created scope.
+            </summary>
+        </member>
+        <member name="T:UnityFx.DependencyInjection.ServiceDescriptor">
+            <summary>
+            Describes a service with its service type, implementation, and lifetime.
+            </summary>
+            <seealso cref="T:UnityFx.DependencyInjection.IServiceCollection"/>
+            <seealso cref="T:System.IServiceProvider"/>
+        </member>
+        <member name="P:UnityFx.DependencyInjection.ServiceDescriptor.ServiceType">
+            <summary>
+            Gets the service type.
+            </summary>
+            <seealso cref="P:UnityFx.DependencyInjection.ServiceDescriptor.ImplementationType"/>
+            <seealso cref="P:UnityFx.DependencyInjection.ServiceDescriptor.ImplementationInstance"/>
+            <seealso cref="P:UnityFx.DependencyInjection.ServiceDescriptor.ImplementationFactory"/>
+        </member>
+        <member name="P:UnityFx.DependencyInjection.ServiceDescriptor.ImplementationType">
+            <summary>
+            Gets the service type.
+            </summary>
+            <seealso cref="P:UnityFx.DependencyInjection.ServiceDescriptor.ImplementationInstance"/>
+            <seealso cref="P:UnityFx.DependencyInjection.ServiceDescriptor.ImplementationFactory"/>
+            <seealso cref="P:UnityFx.DependencyInjection.ServiceDescriptor.ServiceType"/>
+        </member>
+        <member name="P:UnityFx.DependencyInjection.ServiceDescriptor.ImplementationFactory">
+            <summary>
+            Gets the service factory.
+            </summary>
+            <seealso cref="P:UnityFx.DependencyInjection.ServiceDescriptor.ImplementationInstance"/>
+            <seealso cref="P:UnityFx.DependencyInjection.ServiceDescriptor.ImplementationType"/>
+            <seealso cref="P:UnityFx.DependencyInjection.ServiceDescriptor.ServiceType"/>
+        </member>
+        <member name="P:UnityFx.DependencyInjection.ServiceDescriptor.ImplementationInstance">
+            <summary>
+            Gets the singleton service instance.
+            </summary>
+            <seealso cref="P:UnityFx.DependencyInjection.ServiceDescriptor.ImplementationFactory"/>
+            <seealso cref="P:UnityFx.DependencyInjection.ServiceDescriptor.ImplementationType"/>
+            <seealso cref="P:UnityFx.DependencyInjection.ServiceDescriptor.ServiceType"/>
+        </member>
+        <member name="P:UnityFx.DependencyInjection.ServiceDescriptor.Lifetime">
+            <summary>
+            Gets the service lifetime.
+            </summary>
+            <seealso cref="P:UnityFx.DependencyInjection.ServiceDescriptor.ServiceType"/>
+        </member>
+        <member name="M:UnityFx.DependencyInjection.ServiceDescriptor.#ctor(System.Type,System.Object)">
+            <summary>
+            Initializes a new instance of the <see cref="T:UnityFx.DependencyInjection.ServiceDescriptor"/> class with the specified <paramref name="instance"/> as a <see cref="F:UnityFx.DependencyInjection.ServiceLifetime.Singleton"/>.
+            </summary>
+            <param name="serviceType">Service type.</param>
+            <param name="instance">Service singleton instance.</param>
+            <exception cref="T:System.ArgumentNullException">Thrown if either <paramref name="serviceType"/> or <paramref name="instance"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:UnityFx.DependencyInjection.ServiceDescriptor.#ctor(System.Type,System.Func{System.IServiceProvider,System.Object},UnityFx.DependencyInjection.ServiceLifetime)">
+            <summary>
+            Initializes a new instance of the <see cref="T:UnityFx.DependencyInjection.ServiceDescriptor"/> class with the specified <paramref name="implementationFactory"/> and <paramref name="lifetime"/>.
+            </summary>
+            <param name="serviceType">Service type.</param>
+            <param name="implementationFactory">Service factory.</param>
+            <param name="lifetime">Service lifetime.</param>
+            <exception cref="T:System.ArgumentNullException">Thrown if either <paramref name="serviceType"/> or <paramref name="implementationFactory"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:UnityFx.DependencyInjection.ServiceDescriptor.#ctor(System.Type,System.Type,UnityFx.DependencyInjection.ServiceLifetime)">
+            <summary>
+            Initializes a new instance of the <see cref="T:UnityFx.DependencyInjection.ServiceDescriptor"/> class with the specified <paramref name="implementationType"/> and <paramref name="lifetime"/>.
+            </summary>
+            <param name="serviceType">Service type.</param>
+            <param name="implementationType">Service implementation type.</param>
+            <param name="lifetime">Service lifetime.</param>
+            <exception cref="T:System.ArgumentNullException">Thrown if either <paramref name="serviceType"/> or <paramref name="implementationType"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="T:UnityFx.DependencyInjection.ServiceLifetime">
+            <summary>
+            Specifies the lifetime of a service defined via <see cref="T:UnityFx.DependencyInjection.ServiceDescriptor"/>.
+            </summary>
+        </member>
+        <member name="F:UnityFx.DependencyInjection.ServiceLifetime.Singleton">
+            <summary>
+            Specifies that a single instance of the service will be created.
+            </summary>
+        </member>
+        <member name="F:UnityFx.DependencyInjection.ServiceLifetime.Scoped">
+            <summary>
+            Specifies that a new instance of the service will be created for each scope.
+            </summary>
+        </member>
+        <member name="F:UnityFx.DependencyInjection.ServiceLifetime.Transient">
+            <summary>
+            Specifies that a new instance of the service will be created every time it is requested.
+            </summary>
+        </member>
+        <member name="T:UnityFx.DependencyInjection.IServiceFactory">
+            <summary>
+            A generic service factory.
+            </summary>
+        </member>
+        <member name="P:UnityFx.DependencyInjection.IServiceFactory.ServiceType">
+            <summary>
+            Gets the service type.
+            </summary>
+            <seealso cref="P:UnityFx.DependencyInjection.IServiceFactory.Lifetime"/>
+        </member>
+        <member name="P:UnityFx.DependencyInjection.IServiceFactory.Lifetime">
+            <summary>
+            Gets the service lifetime.
+            </summary>
+            <seealso cref="P:UnityFx.DependencyInjection.IServiceFactory.ServiceType"/>
+        </member>
+        <member name="M:UnityFx.DependencyInjection.IServiceFactory.CreateInstance(System.IServiceProvider)">
+            <summary>
+            Instantiates the service.
+            </summary>
+        </member>
+        <member name="T:UnityFx.DependencyInjection.ServiceCollection">
+            <summary>
+            Default implementation of <see cref="T:UnityFx.DependencyInjection.IServiceCollection"/>.
+            </summary>
+            <seealso cref="T:UnityFx.DependencyInjection.ServiceDescriptor"/>
+        </member>
+        <member name="M:UnityFx.DependencyInjection.ServiceCollection.Contains(System.Type)">
+            <inheritdoc/>
+        </member>
+        <member name="M:UnityFx.DependencyInjection.ServiceCollection.Remove(System.Type)">
+            <inheritdoc/>
+        </member>
+        <member name="T:UnityFx.DependencyInjection.ServiceCollectionExtensions">
+            <summary>
+            Extensions for <see cref="T:UnityFx.DependencyInjection.IServiceCollection"/>.
+            </summary>
+        </member>
+        <member name="M:UnityFx.DependencyInjection.ServiceCollectionExtensions.Add(UnityFx.DependencyInjection.IServiceCollection,System.Collections.Generic.IEnumerable{UnityFx.DependencyInjection.ServiceDescriptor})">
+            <summary>
+            Adds a sequence of <see cref="T:UnityFx.DependencyInjection.ServiceDescriptor"/> to the <paramref name="collection"/>.
+            </summary>
+            <param name="collection">The <see cref="T:UnityFx.DependencyInjection.IServiceCollection"/> instance.</param>
+            <param name="descriptors">The <see cref="T:UnityFx.DependencyInjection.ServiceDescriptor"/>s to add.</param>
+        </member>
+        <member name="M:UnityFx.DependencyInjection.ServiceCollectionExtensions.Replace(UnityFx.DependencyInjection.IServiceCollection,UnityFx.DependencyInjection.ServiceDescriptor)">
+            <summary>
+            Removes the first service in <see cref="T:UnityFx.DependencyInjection.IServiceCollection"/> with the same service type as <paramref name="descriptor"/>
+            and adds <paramef name="descriptor"/> to the collection.
+            </summary>
+            <param name="collection">The <see cref="T:UnityFx.DependencyInjection.IServiceCollection"/>.</param>
+            <param name="descriptor">The <see cref="T:UnityFx.DependencyInjection.ServiceDescriptor"/> to replace with.</param>
+        </member>
+        <member name="M:UnityFx.DependencyInjection.ServiceCollectionExtensions.Remove``1(UnityFx.DependencyInjection.IServiceCollection)">
+            <summary>
+            Removes the first services of type <typeparamef name="T"/> in <see cref="T:UnityFx.DependencyInjection.IServiceCollection"/>.
+            </summary>
+            <param name="collection">The <see cref="T:UnityFx.DependencyInjection.IServiceCollection"/>.</param>
+        </member>
+        <member name="M:UnityFx.DependencyInjection.ServiceCollectionExtensions.RemoveAll``1(UnityFx.DependencyInjection.IServiceCollection)">
+            <summary>
+            Removes all services of type <typeparamef name="T"/> in <see cref="T:UnityFx.DependencyInjection.IServiceCollection"/>.
+            </summary>
+            <param name="collection">The <see cref="T:UnityFx.DependencyInjection.IServiceCollection"/>.</param>
+        </member>
+        <member name="M:UnityFx.DependencyInjection.ServiceCollectionExtensions.RemoveAll(UnityFx.DependencyInjection.IServiceCollection,System.Type)">
+            <summary>
+            Removes all services of type <paramef name="serviceType"/> in <see cref="T:UnityFx.DependencyInjection.IServiceCollection"/>.
+            </summary>
+            <param name="collection">The <see cref="T:UnityFx.DependencyInjection.IServiceCollection"/>.</param>
+            <param name="serviceType">The service type to remove.</param>
+        </member>
+        <member name="M:UnityFx.DependencyInjection.ServiceCollectionExtensions.AddSingleton(UnityFx.DependencyInjection.IServiceCollection,System.Type,System.Type)">
+            <summary>
+            Adds an instance of <see cref="T:UnityFx.DependencyInjection.ServiceDescriptor"/> with the specified <paramref name="serviceType"/> and <paramref name="implementationType"/> and the <see cref="F:UnityFx.DependencyInjection.ServiceLifetime.Singleton"/> lifetime.
+            </summary>
+            <param name="services">Target service collection.</param>
+            <param name="serviceType">Type of the service.</param>
+            <param name="implementationType">Type of the service implementation.</param>
+        </member>
+        <member name="M:UnityFx.DependencyInjection.ServiceCollectionExtensions.AddSingleton(UnityFx.DependencyInjection.IServiceCollection,System.Type)">
+            <summary>
+            Adds an instance of <see cref="T:UnityFx.DependencyInjection.ServiceDescriptor"/> with the specified <paramref name="serviceType"/> and the <see cref="F:UnityFx.DependencyInjection.ServiceLifetime.Singleton"/> lifetime.
+            </summary>
+            <param name="services">Target service collection.</param>
+            <param name="serviceType">Type of the service/implementation.</param>
+        </member>
+        <member name="M:UnityFx.DependencyInjection.ServiceCollectionExtensions.AddSingleton(UnityFx.DependencyInjection.IServiceCollection,System.Type,System.Object)">
+            <summary>
+            Adds an instance of <see cref="T:UnityFx.DependencyInjection.ServiceDescriptor"/> with the specified <paramref name="serviceType"/> and <paramref name="instance"/> and the <see cref="F:UnityFx.DependencyInjection.ServiceLifetime.Singleton"/> lifetime.
+            </summary>
+            <param name="services">Target service collection.</param>
+            <param name="serviceType">Type of the service.</param>
+            <param name="instance">The service instance.</param>
+        </member>
+        <member name="M:UnityFx.DependencyInjection.ServiceCollectionExtensions.AddSingleton(UnityFx.DependencyInjection.IServiceCollection,System.Type,System.Func{System.IServiceProvider,System.Object})">
+            <summary>
+            Adds an instance of <see cref="T:UnityFx.DependencyInjection.ServiceDescriptor"/> with the specified <paramref name="serviceType"/> and <paramref name="implementationFactory"/> and the <see cref="F:UnityFx.DependencyInjection.ServiceLifetime.Singleton"/> lifetime.
+            </summary>
+            <param name="services">Target service collection.</param>
+            <param name="serviceType">Type of the service.</param>
+            <param name="implementationFactory">Factory delegate for the service instances.</param>
+        </member>
+        <member name="M:UnityFx.DependencyInjection.ServiceCollectionExtensions.AddSingleton``2(UnityFx.DependencyInjection.IServiceCollection)">
+            <summary>
+            Adds an instance of <see cref="T:UnityFx.DependencyInjection.ServiceDescriptor"/> with the specified <typeparamref name="TService"/> and <typeparamref name="TImplementation"/> and the <see cref="F:UnityFx.DependencyInjection.ServiceLifetime.Singleton"/> lifetime.
+            </summary>
+            <param name="services">Target service collection.</param>
+            <typeparam name="TService">Type of the service.</typeparam>
+            <typeparam name="TImplementation">Type of the service implementation.</typeparam>
+        </member>
+        <member name="M:UnityFx.DependencyInjection.ServiceCollectionExtensions.AddSingleton``1(UnityFx.DependencyInjection.IServiceCollection)">
+            <summary>
+            Adds an instance of <see cref="T:UnityFx.DependencyInjection.ServiceDescriptor"/> with the specified <typeparamref name="TService"/> and the <see cref="F:UnityFx.DependencyInjection.ServiceLifetime.Singleton"/> lifetime.
+            </summary>
+            <param name="services">Target service collection.</param>
+            <typeparam name="TService">Type of the service/implementation.</typeparam>
+        </member>
+        <member name="M:UnityFx.DependencyInjection.ServiceCollectionExtensions.AddSingleton``1(UnityFx.DependencyInjection.IServiceCollection,``0)">
+            <summary>
+            Adds an instance of <see cref="T:UnityFx.DependencyInjection.ServiceDescriptor"/> with the specified <typeparamref name="TService"/> and <paramref name="instance"/> and the <see cref="F:UnityFx.DependencyInjection.ServiceLifetime.Singleton"/> lifetime.
+            </summary>
+            <param name="services">Target service collection.</param>
+            <typeparam name="TService">Type of the service.</typeparam>
+            <param name="instance">The singleton instance.</param>
+        </member>
+        <member name="M:UnityFx.DependencyInjection.ServiceCollectionExtensions.AddTransient(UnityFx.DependencyInjection.IServiceCollection,System.Type,System.Type)">
+            <summary>
+            Adds an instance of <see cref="T:UnityFx.DependencyInjection.ServiceDescriptor"/> with the specified <paramref name="serviceType"/> and <paramref name="implementationType"/> and the <see cref="F:UnityFx.DependencyInjection.ServiceLifetime.Transient"/> lifetime.
+            </summary>
+            <param name="services">Target service collection.</param>
+            <param name="serviceType">Type of the service.</param>
+            <param name="implementationType">Type of the service implementation.</param>
+        </member>
+        <member name="M:UnityFx.DependencyInjection.ServiceCollectionExtensions.AddTransient(UnityFx.DependencyInjection.IServiceCollection,System.Type)">
+            <summary>
+            Adds an instance of <see cref="T:UnityFx.DependencyInjection.ServiceDescriptor"/> with the specified <paramref name="serviceType"/> and the <see cref="F:UnityFx.DependencyInjection.ServiceLifetime.Transient"/> lifetime.
+            </summary>
+            <param name="services">Target service collection.</param>
+            <param name="serviceType">Type of the service/implementation.</param>
+        </member>
+        <member name="M:UnityFx.DependencyInjection.ServiceCollectionExtensions.AddTransient(UnityFx.DependencyInjection.IServiceCollection,System.Type,System.Func{System.IServiceProvider,System.Object})">
+            <summary>
+            Adds an instance of <see cref="T:UnityFx.DependencyInjection.ServiceDescriptor"/> with the specified <paramref name="serviceType"/> and <paramref name="implementationFactory"/> and the <see cref="F:UnityFx.DependencyInjection.ServiceLifetime.Transient"/> lifetime.
+            </summary>
+            <param name="services">Target service collection.</param>
+            <param name="serviceType">Type of the service.</param>
+            <param name="implementationFactory">Factory delegate for the service instances.</param>
+        </member>
+        <member name="M:UnityFx.DependencyInjection.ServiceCollectionExtensions.AddTransient``2(UnityFx.DependencyInjection.IServiceCollection)">
+            <summary>
+            Adds an instance of <see cref="T:UnityFx.DependencyInjection.ServiceDescriptor"/> with the specified <typeparamref name="TService"/> and <typeparamref name="TImplementation"/> and the <see cref="F:UnityFx.DependencyInjection.ServiceLifetime.Transient"/> lifetime.
+            </summary>
+            <param name="services">Target service collection.</param>
+            <typeparam name="TService">Type of the service.</typeparam>
+            <typeparam name="TImplementation">Type of the service implementation.</typeparam>
+        </member>
+        <member name="M:UnityFx.DependencyInjection.ServiceCollectionExtensions.AddTransient``1(UnityFx.DependencyInjection.IServiceCollection)">
+            <summary>
+            Adds an instance of <see cref="T:UnityFx.DependencyInjection.ServiceDescriptor"/> with the specified <typeparamref name="TService"/> and the <see cref="F:UnityFx.DependencyInjection.ServiceLifetime.Transient"/> lifetime.
+            </summary>
+            <param name="services">Target service collection.</param>
+            <typeparam name="TService">Type of the service/implementation.</typeparam>
+        </member>
+        <member name="M:UnityFx.DependencyInjection.ServiceCollectionExtensions.AddScoped(UnityFx.DependencyInjection.IServiceCollection,System.Type,System.Type)">
+            <summary>
+            Adds an instance of <see cref="T:UnityFx.DependencyInjection.ServiceDescriptor"/> with the specified <paramref name="serviceType"/> and <paramref name="implementationType"/> and the <see cref="F:UnityFx.DependencyInjection.ServiceLifetime.Scoped"/> lifetime.
+            </summary>
+            <param name="services">Target service collection.</param>
+            <param name="serviceType">Type of the service.</param>
+            <param name="implementationType">Type of the service implementation.</param>
+        </member>
+        <member name="M:UnityFx.DependencyInjection.ServiceCollectionExtensions.AddScoped(UnityFx.DependencyInjection.IServiceCollection,System.Type)">
+            <summary>
+            Adds an instance of <see cref="T:UnityFx.DependencyInjection.ServiceDescriptor"/> with the specified <paramref name="serviceType"/> and the <see cref="F:UnityFx.DependencyInjection.ServiceLifetime.Scoped"/> lifetime.
+            </summary>
+            <param name="services">Target service collection.</param>
+            <param name="serviceType">Type of the service/implementation.</param>
+        </member>
+        <member name="M:UnityFx.DependencyInjection.ServiceCollectionExtensions.AddScoped(UnityFx.DependencyInjection.IServiceCollection,System.Type,System.Func{System.IServiceProvider,System.Object})">
+            <summary>
+            Adds an instance of <see cref="T:UnityFx.DependencyInjection.ServiceDescriptor"/> with the specified <paramref name="serviceType"/> and <paramref name="implementationFactory"/> and the <see cref="F:UnityFx.DependencyInjection.ServiceLifetime.Scoped"/> lifetime.
+            </summary>
+            <param name="services">Target service collection.</param>
+            <param name="serviceType">Type of the service.</param>
+            <param name="implementationFactory">Factory delegate for the service instances.</param>
+        </member>
+        <member name="M:UnityFx.DependencyInjection.ServiceCollectionExtensions.AddScoped``2(UnityFx.DependencyInjection.IServiceCollection)">
+            <summary>
+            Adds an instance of <see cref="T:UnityFx.DependencyInjection.ServiceDescriptor"/> with the specified <typeparamref name="TService"/> and <typeparamref name="TImplementation"/> and the <see cref="F:UnityFx.DependencyInjection.ServiceLifetime.Scoped"/> lifetime.
+            </summary>
+            <param name="services">Target service collection.</param>
+            <typeparam name="TService">Type of the service.</typeparam>
+            <typeparam name="TImplementation">Type of the service implementation.</typeparam>
+        </member>
+        <member name="M:UnityFx.DependencyInjection.ServiceCollectionExtensions.AddScoped``1(UnityFx.DependencyInjection.IServiceCollection)">
+            <summary>
+            Adds an instance of <see cref="T:UnityFx.DependencyInjection.ServiceDescriptor"/> with the specified <typeparamref name="TService"/> and the <see cref="F:UnityFx.DependencyInjection.ServiceLifetime.Scoped"/> lifetime.
+            </summary>
+            <param name="services">Target service collection.</param>
+            <typeparam name="TService">Type of the service.</typeparam>
+        </member>
+        <member name="M:UnityFx.DependencyInjection.ServiceCollectionExtensions.BuildServiceProvider(UnityFx.DependencyInjection.IServiceCollection)">
+            <summary>
+            Creates a <see cref="T:UnityFx.DependencyInjection.ServiceProvider"/> containing services from the provided <see cref="T:UnityFx.DependencyInjection.IServiceCollection"/>.
+            </summary>
+            <param name="services">The source <see cref="T:UnityFx.DependencyInjection.IServiceCollection"/> containing service descriptors.</param>
+        </member>
+        <member name="M:UnityFx.DependencyInjection.ServiceCollectionExtensions.BuildServiceProvider(UnityFx.DependencyInjection.IServiceCollection,System.Boolean)">
+            <summary>
+            Creates a <see cref="T:UnityFx.DependencyInjection.ServiceProvider"/> containing services from the provided <see cref="T:UnityFx.DependencyInjection.IServiceCollection"/>.
+            </summary>
+            <param name="services">The source <see cref="T:UnityFx.DependencyInjection.IServiceCollection"/> containing service descriptors.</param>
+            <param name="validate">If <see langword="true"/> all registered services are validated during <see cref="T:UnityFx.DependencyInjection.ServiceProvider"/> construction.</param>
+        </member>
+        <member name="T:UnityFx.DependencyInjection.ServiceProvider">
+            <summary>
+            Default implementatino for <see cref="T:System.IServiceProvider"/>.
+            </summary>
+        </member>
+        <member name="M:UnityFx.DependencyInjection.ServiceProvider.GetService(System.Type)">
+            <inheritdoc/>
+        </member>
+        <member name="M:UnityFx.DependencyInjection.ServiceProvider.Dispose">
+            <inheritdoc/>
+        </member>
+        <member name="T:UnityFx.DependencyInjection.ServiceProviderExtensions">
+            <summary>
+            Extensions for <see cref="T:System.IServiceProvider"/>.
+            </summary>
+        </member>
+        <member name="M:UnityFx.DependencyInjection.ServiceProviderExtensions.GetService``1(System.IServiceProvider)">
+            <summary>
+            Returns an instance of a service for the type specified.
+            </summary>
+            <typeparam name="TService">Type of the requested service.</typeparam>
+            <param name="serviceProvider">A service provider.</param>
+            <returns>Returns service instance registered for the <typeparamref name="TService"/> type.</returns>
+        </member>
+        <member name="M:UnityFx.DependencyInjection.ServiceProviderExtensions.GetRequiredService(System.IServiceProvider,System.Type)">
+            <summary>
+            Returns an instance of a service for the type specified.
+            </summary>
+            <param name="serviceProvider">A service provider.</param>
+            <param name="serviceType">Type of the requested service.</param>
+            <exception cref="T:System.ArgumentNullException">Thrown if <paramref name="serviceType"/> is <see langword="null"/>.</exception>
+            <exception cref="T:System.InvalidOperationException">Thrown if service is not registered in the <paramref name="serviceProvider"/>.</exception>
+            <returns>Returns service instance registered for the <paramref name="serviceType"/> type.</returns>
+        </member>
+        <member name="M:UnityFx.DependencyInjection.ServiceProviderExtensions.GetRequiredService``1(System.IServiceProvider)">
+            <summary>
+            Returns an instance of a service for the type specified.
+            </summary>
+            <typeparam name="TService">Type of the requested service.</typeparam>
+            <param name="serviceProvider">A service provider.</param>
+            <exception cref="T:System.InvalidOperationException">Thrown if service is not registered in the <paramref name="serviceProvider"/>.</exception>
+            <returns>Returns service instance registered for the <typeparamref name="TService"/> type.</returns>
+        </member>
+        <member name="M:UnityFx.DependencyInjection.ServiceProviderExtensions.CreateScope(System.IServiceProvider)">
+            <summary>
+            Returns an instance of a service for the type specified.
+            </summary>
+            <param name="serviceProvider">A service provider.</param>
+            <returns>Creates a new scope.</returns>
+        </member>
+        <member name="M:UnityFx.DependencyInjection.ServiceProviderExtensions.CreateInstance(System.IServiceProvider,System.Type,System.Object[])">
+            <summary>
+            Instantiate a type with constructor arguments provided directly and/or from an <see cref="T:System.IServiceProvider"/>.
+            </summary>
+            <param name="serviceProvider">The service provider used to resolve dependencies.</param>
+            <param name="instanceType">The type to activate.</param>
+            <param name="args">Constructor arguments not provided by the <paramref name="serviceProvider"/>.</param>
+            <exception cref="T:System.ArgumentNullException">Thrown if <paramref name="instanceType"/> is <see langword="null"/>.</exception>
+            <returns>An activated object of type <paramref name="instanceType"/>.</returns>
+        </member>
+        <member name="M:UnityFx.DependencyInjection.ServiceProviderExtensions.CreateInstance``1(System.IServiceProvider,System.Object[])">
+            <summary>
+            Instantiate a type with constructor arguments provided directly and/or from an <see cref="T:System.IServiceProvider"/>.
+            </summary>
+            <typeparam name="T">The type to activate.</typeparam>
+            <param name="serviceProvider">The service provider used to resolve dependencies.</param>
+            <param name="args">Constructor arguments not provided by the <paramref name="serviceProvider"/>.</param>
+            <returns>An activated object of type <typeparamref name="T"/>.</returns>
+        </member>
+        <member name="M:UnityFx.DependencyInjection.ServiceProviderExtensions.Inject(System.IServiceProvider,System.Object)">
+            <summary>
+            Injects dependencies from <paramref name="serviceProvider"/> into properties of the specified object instance.
+            </summary>
+            <param name="serviceProvider">The service provider used to resolve dependencies.</param>
+            <param name="target">The target object instance for property injection.</param>
+        </member>
+    </members>
+</doc>

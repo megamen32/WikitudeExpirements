@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>JetBrains.ExternalAnnotations</id>
+    <version>10.2.66</version>
+    <authors>JetBrains</authors>
+    <owners>JetBrains</owners>
+    <licenseUrl>https://raw.githubusercontent.com/JetBrains/ExternalAnnotations/master/LICENSE.md</licenseUrl>
+    <projectUrl>https://github.com/JetBrains/ExternalAnnotations</projectUrl>
+    <iconUrl>https://resources.jetbrains.com/storage/products/resharper/img/meta/ReSharper_64.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>ReSharper External Annotations for .NET framework and popular libraries.</description>
+    <releaseNotes />
+    <tags>resharper annotations</tags>
+    <dependencies>
+      <dependency id="Wave" version="1.0.0" />
+    </dependencies>
+  </metadata>
+</package>
